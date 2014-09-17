@@ -1,0 +1,112 @@
+.logo{
+    text-align: center;
+    display: block;
+    margin: 30px 0 11px;
+}
+
+.tagline{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #828383;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.navbar-right:first-child{
+    margin-right: -15px;
+}
+.navbar-nav.navbar-right:last-child{
+    margin-right: 0;
+}
+.navbar{
+    border: 0 none;
+    margin-bottom: 0;
+
+    &:last-child{
+        margin-bottom: 30px;
+    }
+
+    .socialicons{
+        margin: 7px -15px;
+        padding: 0 15px;
+
+        @media (min-width: @screen-sm-min){
+            margin: 7px 0;
+        }
+
+        >li{
+            display: inline-block;
+
+            &+li{
+                margin-left: 5px;
+            }
+
+            a{
+                display: inline-block;
+                text-indent: -999px ;
+                overflow: hidden;
+                width: 30px;
+                height: 30px;
+                padding: 0;
+                border-radius: 50%;
+                background-size: cover;
+                border: 5px solid transparent;
+                box-shadow: 0 0 0 2px #fff;
+                margin: 2px;
+                vertical-align: top;
+                transition: all .2s ease;
+
+                &:hover,
+                &:focus{
+                    .scale(1.1);
+                }
+            }
+        }
+    }
+}
+.searchbar{
+    background-color: @brand-primary;
+    background-image: url('../img/bg/navbar-bg.png');
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.headbar{
+    background-color: transparent;
+    min-height: 0;
+}
+.navbar-header{
+    margin-top: -50px;
+}
+.navbar-collapse{
+    border-top: 0 none;
+}
+.search-form{
+
+    .form-group{
+        position: relative;
+        margin-bottom: 0;
+
+        label{
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 20px;
+            width: 20px;
+            background-size: cover;
+            margin: 8px 0 0 5px;
+        }
+
+        .form-control{
+            padding-left: 30px;
+        }
+    }
+}
+.top-banner{
+    margin-bottom: 30px;
+    text-align: center;
+
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+}

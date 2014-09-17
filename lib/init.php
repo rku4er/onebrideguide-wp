@@ -10,8 +10,7 @@ function roots_setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots'),
-    'secondary_navigation' => __('Secondary Navigation', 'roots')
+    'primary_navigation' => __('Primary Navigation', 'roots')
   ));
 
   // Add post thumbnails
@@ -19,11 +18,11 @@ function roots_setup() {
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
-  add_image_size( 'custom', 187, 215, true );
+  add_image_size( 'custom', 480 );
 
   // Add post formats
   // http://codex.wordpress.org/Post_Formats
-  add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
+  //add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio'));
 
   // Add HTML5 markup for captions
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
@@ -65,13 +64,15 @@ add_action('widgets_init', 'roots_widgets_init');
 add_action( 'init', 'create_posttype' );
 
 function create_posttype() {
-  register_post_type( 'custompost',
+  register_post_type( 'album',
     array(
       'labels' => array(
-        'name' => __( 'Custom Posts' ),
-        'singular_name' => __( 'Custom Posts' )
+        'name' => __( 'Albums' ),
+        'singular_name' => __( 'Album' ),
+        'add_new' => __( 'Add New Album' ),
+        'add_new_item' => __( 'Add New Album' ),
       ),
-      'rewrite' => array('slug' => 'archive-custompost'),
+      'rewrite' => array('slug' => 'archive-albums'),
       'public' => true,
       'hierarchical' => true,
       'has_archive' => true,

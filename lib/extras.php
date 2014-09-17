@@ -34,3 +34,31 @@ function roots_wrap_base_cpts($templates) {
     return $templates;
 }
 
+function search_filter($query) {
+  if ( !is_admin() && $query->is_main_query() ) {
+    if ($query->is_search) {
+      $query->set('post_type', 'post');
+    }
+  }
+}
+
+add_action('pre_get_posts','search_filter');
+
+function my_post_queries( $query ) {
+
+  // do not alter the query on wp-admin pages and only alter it if it's the main query
+  if (!is_admin() && $query->is_main_query()){
+
+    // alter the query for the home and category pages
+    if(is_home()){
+      $query->set('posts_per_page', 3);
+    }
+
+    if(is_category()){
+      $query->set('posts_per_page', 3);
+    }
+
+  }
+}
+
+add_action( 'pre_get_posts', 'my_post_queries' );
