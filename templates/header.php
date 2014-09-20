@@ -1,6 +1,6 @@
 <header id="header">
 
-  <section class="searchbar navbar navbar-default navbar-static-top">
+  <section class="navbar navbar-default navbar-static-top">
 
     <div class="container">
 
@@ -35,23 +35,35 @@
 
   </section>
 
-  <section class="headbar navbar navbar-default navbar-static-top" role="banner">
+  <section class="header" role="banner">
 
-    <div class="collapse navbar-collapse">
+    <div class="container">
 
-      <div class="container">
+      <?php $logo = '<a href="'. get_bloginfo('url') .'"><img src="'. get_template_directory_uri() .'/assets/img/bg/one-bride-guide-logo.png" alt="'. get_bloginfo('name') .'"></a>'; ?>
 
-        <?php $logo = '<a href="'. get_bloginfo('url') .'"><img src="'. get_template_directory_uri() .'/assets/img/bg/one-bride-guide-logo.png" alt="'. get_bloginfo('name') .'"></a>'; ?>
+      <?php if(is_home()): ?>
+        <h1 class="logo"><?php echo $logo; ?></h1>
+      <?php else: ?>
+        <strong class="logo"><?php echo $logo; ?></strong>
+      <?php endif; ?>
 
-        <?php if(is_home()): ?>
-          <h1 class="logo"><?php echo $logo; ?></h1>
-        <?php else: ?>
-          <strong class="logo"><?php echo $logo; ?></strong>
-        <?php endif; ?>
+      <p class="tagline"><?php echo get_bloginfo('description'); ?></p>
 
-        <p class="tagline"><?php echo get_bloginfo('description'); ?></p>
+      <?php
+        if(get_field('latest_issue_image', 'options')):
+          $src = wp_get_attachment_image_src(get_field('latest_issue_image', 'options'), 'thumbnail');
+      ?>
+      <div class="latest-issue clearfix">
+        <a href="<?php echo get_field('latest_issue_url', 'options'); ?>">
+          Read Our <br> Latest Issue
+          <img src="<?php echo $src[0]; ?>" alt="">
+        </a>
+      </div>
+      <?php endif; ?>
 
-        <nav role="navigation">
+      <div class="collapse navbar-collapse">
+
+        <nav role="navigation" class="clearfix">
           <?php
             if (has_nav_menu('primary_navigation')) :
               wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav'));
@@ -67,10 +79,10 @@
 
 </header>
 
-<section class="top-banner">
-
-  <div class="container">
-    <?php echo do_shortcode('[cm_ad_changer campaign_id=1]') ?>
-  </div>
-
-</section>
+<?php if(get_field('top_banner', 'options')): ?>
+  <section class="top-banner">
+    <div class="container">
+      <?php echo do_shortcode(get_field('top_banner', 'options')); ?>
+    </div>
+  </section>
+<?php endif; ?>

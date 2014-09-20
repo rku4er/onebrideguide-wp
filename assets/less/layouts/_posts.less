@@ -1,5 +1,223 @@
-.hentry header { }
-.hentry time { }
-.hentry .byline { }
-.hentry .entry-content { }
-.hentry footer { }
+.columns{
+    .hentry{
+        margin-top: 4%;
+
+        &:nth-child(1){
+            margin-top: 0;
+        }
+
+        @media (min-width: @screen-md-min){
+            &:nth-child(2){
+                margin-top: 0;
+            }
+
+            &:nth-child(odd){
+                width: 48%;
+                float: left;
+            }
+            &:nth-child(even){
+                width: 48%;
+                float: right;
+            }
+        }
+    }
+}
+
+.page{
+    .hentry{
+        padding-bottom: 30px;
+    }
+}
+
+.hentry{
+    @offset: 40px;
+    background-color: #FFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+
+    header{
+        overflow: hidden;
+
+        a{
+            img{
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+                transition: all .2s ease;
+            }
+
+            &:hover,
+            &:focus{
+                img{
+                    .scale(1.1);
+                }
+            }
+        }
+    }
+
+    footer{
+        font-size: 14px;
+        padding: 20px @offset;
+        border-top: 1px solid #E3E3E3;
+
+        dl{
+            margin: 0;
+
+            dt{
+                float: left;
+                clear: left;
+                margin-right: 10px;
+                color: @gray;
+            }
+            dd{
+                a{
+                    color: @gray-light;
+                    text-decoration: none;
+
+                    &:hover,
+                    &:focus{
+                        color: @brand-primary;
+                    }
+                }
+            }
+        }
+    }
+
+    .page-header{
+        border-bottom: 0 none;
+        padding-bottom: 0;
+
+        h1{
+            margin: 0;
+        }
+    }
+
+    .entry-title{
+        font-family: 'Satisfy', cursive;
+        font-weight: 500;
+        color: #000;
+
+        a{
+            color: #000;
+            text-decoration: none;
+            transition: all .2s ease;
+
+            &:hover,
+            &:focus{
+                color: @brand-primary;
+            }
+        }
+    }
+
+    .entry-summary{
+        padding: 0 @offset;
+
+        .entry-title{
+            font-size: 30px;
+            margin: 22px 0 11px;
+        }
+
+        p{
+            margin-bottom: 22px;
+        }
+    }
+
+    .entry-content{
+        padding: 0 @offset;
+
+        .entry-title{
+            font-size: 36px;
+            margin: 33px 0 22px;
+        }
+
+        img[class^="wp-image-"],
+        img[class*=" wp-image-"]{
+            max-width: 100%;
+            height: auto;
+        }
+
+        p{
+            margin-bottom: 22px;
+        }
+    }
+
+    .comment-wrapper{
+        padding: 0 @offset 20px;
+    }
+}
+
+.pager{
+    li{
+        >a{
+            transition: all .2s ease;
+            &:hover,
+            &:focus{
+                background-color: @brand-primary;
+                color: #FFF;
+            }
+        }
+    }
+}
+
+.newsletter{
+    background-color: #ceefe9;
+    background-image: url('../img/bg/noise.png');
+    text-align: center;
+    padding: 20px;
+
+    .gform_title{
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .ginput_container{
+        input{
+            display: inline-block;
+            width: auto;
+            vertical-align: top;
+        }
+    }
+
+    .validation_message{
+        display: none;
+    }
+
+    .gform_body,
+    .gform_footer,
+    .gform_fields,
+    .gfield,
+    .ginput_container{
+        display: inline;
+        margin: 0;
+    }
+}
+
+.post-nav{
+    .pager >li >a,
+    .pager >li >span,
+    .more{
+        background-color: #FFF;
+        border: 1px solid @gray-lighter;
+        padding: 10px 15px;
+        font-weight: 700;
+        color: @gray;
+        text-decoration: none;
+        text-align: center;
+        width: 200px;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+        transition: all .2s ease;
+        display: block;
+        margin: 35px auto 0;
+        border-radius: 0;
+
+        &:hover,
+        &:focus{
+            color: #fff;
+            background-color: @brand-primary;
+        }
+    }
+}

@@ -13,6 +13,44 @@
     text-transform: uppercase;
 }
 
+.latest-issue{
+    margin-bottom: 3px;
+
+    >a{
+        background-image: url('../img/bg/ribbon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 38px;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+        color: #454646;
+        float: right;
+        position: relative;
+        padding: 5px 160px 0 40px;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all .2s ease;
+
+        img{
+            position: absolute;
+            bottom: -100%;
+            right: 0;
+            transition: all .2s ease;
+        }
+
+        &:hover,
+        &:focus{
+            color: #fff;
+
+            img{
+                .translate(0, -10px);
+            }
+        }
+    }
+}
+
 .navbar-right:first-child{
     margin-right: -15px;
 }
@@ -23,9 +61,9 @@
     border: 0 none;
     margin-bottom: 0;
 
-    &:last-child{
-        margin-bottom: 30px;
-    }
+    background-color: #7cc5c1;
+    background-image: url('../img/bg/noise.png');
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 
     .socialicons{
         margin: 7px -15px;
@@ -35,50 +73,165 @@
             margin: 7px 0;
         }
 
-        >li{
-            display: inline-block;
+        >li a{
+            box-shadow: 0 0 0 2px #fff;
+        }
+    }
+}
+.navbar-default{
+    .navbar-toggle{
+        border-color: #fff;
 
-            &+li{
-                margin-left: 5px;
+        &:not(.collapsed){
+            background-color: #fff;
+
+            .icon-bar{
+                background-color: @brand-primary;
             }
+        }
 
-            a{
-                display: inline-block;
-                text-indent: -999px ;
-                overflow: hidden;
-                width: 30px;
-                height: 30px;
-                padding: 0;
-                border-radius: 50%;
-                background-size: cover;
-                border: 5px solid transparent;
-                box-shadow: 0 0 0 2px #fff;
-                margin: 2px;
-                vertical-align: top;
-                transition: all .2s ease;
+        &.collapsed{
 
-                &:hover,
-                &:focus{
-                    .scale(1.1);
-                }
+            .icon-bar{
+                background-color: #fff;
+            }
+        }
+
+        &:hover,
+        &:focus{
+            background-color: #fff;
+
+            .icon-bar{
+                background-color: @brand-primary;
             }
         }
     }
 }
-.searchbar{
-    background-color: @brand-primary;
-    background-image: url('../img/bg/navbar-bg.png');
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-.headbar{
-    background-color: transparent;
+.header{
     min-height: 0;
+    margin-bottom: 30px;
+
+    nav{
+        background-color: #fff;
+        border: 1px solid @gray-lighter;
+        padding: 3px 0;
+        position: relative;
+        z-index: 1;
+
+        .nav{
+            border: dashed @brand-primary;
+            border-width: 1px 0;
+            float: none;
+            margin: 0;
+
+            li.active{
+                >a{
+                    background-color: transparent;
+                    color: @brand-primary;
+                }
+            }
+
+            >li{
+                @offset: 30px;
+                @media (min-width: @screen-sm-min){
+                    margin: -4px 0;
+                }
+
+                &+li{
+                    border: solid @gray-lighter;
+                    border-width: 1px 0 0;
+
+                    @media (min-width: @screen-sm-min){
+                        border-width: 0 0 0 1px;
+                    }
+                }
+
+                &:first-child{
+                    >a{
+                        padding-left: @offset;
+                    }
+
+                    .dropdown-menu >li >a{
+                        padding-left: @offset;
+                    }
+                }
+
+                &:last-child{
+                    >a{
+                        padding-right: @offset;
+                    }
+                    .dropdown-menu >li >a{
+                        padding-right: @offset;
+                    }
+                }
+
+                &.dropdown{
+
+                    &.open{
+                        >a{
+                            background-color: #fff;
+                            color: @gray-light;
+
+                            &:hover,
+                            &:focus{
+                                color: @brand-primary;
+                            }
+                        }
+                    }
+                }
+
+                >a{
+                    text-transform: uppercase;
+                    font-weight: 600;
+
+                    &:hover,
+                    &:focus{
+                        background-color: transparent;
+                    }
+                }
+
+                .dropdown-menu{
+                    border-radius: 0;
+                    padding: 0;
+                    border: 1px solid @gray-lighter;
+                    margin: 0 -1px -1px;
+
+                    >li{
+                        &+li{
+                            border-top: 1px solid @gray-light;
+                        }
+
+                        >a{
+                            font-size: 14px;
+                            padding: 10px 15px;
+
+                            &:hover,
+                            &:focus{
+                                background-color: transparent;
+                            }
+                        }
+                    }
+                }
+            }
+
+            a{
+                color: @gray-dark;
+                transition: all .2s ease;
+
+                &:hover,
+                &:focus{
+                    color: @brand-primary;
+                }
+            }
+        }
+    }
 }
 .navbar-header{
     margin-top: -50px;
 }
 .navbar-collapse{
     border-top: 0 none;
+    padding: 0;
 }
 .search-form{
 
@@ -98,6 +251,11 @@
 
         .form-control{
             padding-left: 30px;
+            color: @gray;
+
+            &::placeholder{
+                color: #aaa;
+            }
         }
     }
 }

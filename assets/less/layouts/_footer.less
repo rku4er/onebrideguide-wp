@@ -1,0 +1,126 @@
+.content-info{
+    @bg-widgets: #ceefe9;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+
+    .widget-columns{
+        padding: 30px 0 50px;
+        background-color: @bg-widgets;
+        box-shadow: 0 0 0 2px @bg-widgets;
+        margin-bottom: 2px;
+        border-bottom: 2px dotted @brand-primary;
+
+        @media (min-width: @screen-sm-min){
+            display: table;
+            width: 100%;
+        }
+
+
+        h3{
+            font-family: 'Satisfy', cursive;
+            color: #000;
+            font-size: 30px;
+            margin: 0 0 11px;
+
+            &:not(:first-child){
+                margin-top: 30px;
+            }
+        }
+
+        .widget{
+
+            @media (min-width: @screen-sm-min){
+                display: table-cell;
+                vertical-align: top;
+                width: 27%;
+                padding: 0 3%;
+            }
+
+            &+.widget{
+                padding-top: 20px;
+                border: solid lighten(@brand-primary, 10%);
+                border-width: 2px 0 0;
+
+                @media (min-width: @screen-sm-min){
+                    padding-top: 0;
+                    border-width: 0 0 0 2px;
+                }
+            }
+
+            a{
+                color: @gray-light;
+                text-decoration: none;
+
+                &:hover,
+                &:focus{
+                    color: @gray;
+                }
+            }
+        }
+    }
+
+    .copyright{
+        background-color: @brand-primary;
+        font-weight: bold;
+        text-align: center;
+        color: #fff;
+        padding: 15px 0;
+    }
+
+    ul{
+        list-style: none;
+        padding: 0;
+
+        >li{
+            &+li{
+                margin-top: 5px;
+            }
+        }
+
+        >li[class^="icon-"],
+        >li[class*=" icon-"]{
+            padding-left: 30px;
+            background-size: 25px 25px;
+        }
+    }
+
+    .socialicons{
+
+        >li a{
+            box-shadow: 0 0 0 2px #444;
+        }
+    }
+
+    .instagram-pics{
+
+        >li{
+            margin: 3% 0 0 3%;
+            width: 31%;
+            display: inline-block;
+            vertical-align: top;
+            overflow: hidden;
+            border-radius: 8px;
+
+            &:nth-child(3n+1){
+                margin-left: 0;
+            }
+
+            a{
+
+                img{
+                    width: 100%;
+                    max-width: 100%;
+                    display: block;
+                    transition: all .2s ease;
+                }
+
+                &:hover,
+                &:focus{
+                    img{
+                        .scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+}

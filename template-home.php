@@ -12,29 +12,24 @@ Template Name: Homepage
 <?php endif; ?>
 
 <?php
-    /*if ( get_query_var('paged') ) { $paged = get_query_var('paged'); }
-    elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
-    else { $paged = 1; }
-
+    $front_posts = get_field('posts_on_front_page', 'options');
     $args = array(
         'post_type' => 'post',
-        'posts_per_page' => 3,
-        'paged' => $paged
+        'posts_per_page' => $front_posts ? $front_posts : 4
     );
-    query_posts($args);*/
+    query_posts($args);
 ?>
 
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', get_post_format()); ?>
-<?php endwhile; ?>
+<div class="columns clearfix">
+  <?php while (have_posts()) : the_post(); ?>
+    <?php get_template_part('templates/content', get_post_format()); ?>
+  <?php endwhile; ?>
+</div>
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
   <nav class="post-nav">
-    <ul class="pager">
-      <li class="previous"><?php next_posts_link(__('&larr; Older posts', 'roots')); ?></li>
-      <li class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'roots')); ?></li>
-    </ul>
+    <a href="<?php echo get_field('blog_page', 'options'); ?>" class="more">More Posts</a>
   </nav>
 <?php endif; ?>
 
-<?php //wp_reset_query(); ?>
+<?php wp_reset_query(); ?>

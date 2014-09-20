@@ -23,13 +23,19 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+      $('a[href="#header"]').click(function(){
+        $('html,body').animate({
+          scrollTop: 0
+        }, 500, 'easeInOutExpo');
+        return false;
+      });
     }
   },
   // Home page
   home: {
     init: function() {
       // JavaScript to be fired on the home page
-      $('#columns').columnize({ columns: 2, buildOnce: false });
+      //$('#columns').columnize({ columns: 2, buildOnce: false });
     }
   },
   // About us page, note the change from about-us to about_us.
